@@ -47,16 +47,16 @@
   <main id="main" class="wrap">
     <section aria-labelledby="profile">
       <h2 id="profile">Profilo</h2>
-      <p>Senior QA Automation Engineer con 8+ anni in contesti enterprise (banking, energy, insurance, luxury retail). Progetto e mantengo framework di test automation in Java con Selenium WebDriver e Cucumber (BDD/Gherkin), integrati in pipeline CI/CD (Jenkins, GitHub Actions). Esperienza in performance e load testing con JMeter e LoadRunner, API testing con Postman, team Agile/Scrum e mentoring di profili junior.</p>
+      <p>Senior QA Automation Engineer con 8+ anni in contesti enterprise (banking, energy, insurance, luxury retail). Progetto e mantengo framework di test automation in Java con Selenium WebDriver e Cucumber (BDD/Gherkin), integrati in pipeline CI/CD (Jenkins, GitHub Actions). Esperienza in performance e load testing con JMeter e LoadRunner, anche su sistemi real-time con connessioni WebSocket long-lived, API testing con Postman, team Agile/Scrum e mentoring di profili junior.</p>
     </section>
 
     <section aria-labelledby="skills">
       <h2 id="skills">Competenze tecniche</h2>
       <dl class="grid">
         <dt>Test Automation</dt><dd>Java, Selenium WebDriver, Cucumber, BDD/Gherkin, Test Automation Framework, Tosca</dd>
-        <dt>Performance Testing</dt><dd>JMeter, LoadRunner, VuGen, Load &amp; Stress Testing, Bottleneck Analysis</dd>
-        <dt>CI/CD &amp; Cloud</dt><dd>Jenkins, GitHub Actions, Git, GCP, Linux</dd>
-        <dt>API &amp; Database</dt><dd>REST API Testing, Postman, SQL</dd>
+        <dt>Performance Testing</dt><dd>JMeter, LoadRunner, VuGen, Groovy/JSR223, WebSocket (WSS), Load &amp; Stress Testing, Distributed Load Testing, Bottleneck Analysis</dd>
+        <dt>CI/CD &amp; Cloud</dt><dd>Jenkins, GitHub Actions, Git, GCP, Linux, Bash, Linux Network Tuning (sysctl)</dd>
+        <dt>API &amp; Database</dt><dd>REST API Testing, Postman, JWT, SQL</dd>
         <dt>QA Process</dt><dd>Test Strategy, Test Planning, Regression &amp; Integration Testing, Defect Management, STLC</dd>
         <dt>Tools &amp; Methods</dt><dd>JIRA, TestRail, Salesforce, Agile/Scrum</dd>
       </dl>
@@ -90,6 +90,29 @@
             <ul>
               <li>Test manuali, di integrazione e di sistema su piattaforme Salesforce, coprendo l'intero STLC.</li>
               <li>Preparazione test data, esecuzione test suite e defect tracking a stretto contatto con il cliente.</li>
+            </ul>
+          </article>
+        </li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="projects">
+      <h2 id="projects">Progetti</h2>
+      <ol class="timeline">
+        <li>
+          <article>
+            <header>
+              <h3>Load test WebSocket per notifiche push <span>— JMeter, Groovy, Bash</span></h3>
+              <p class="date"><a href="https://github.com/matteobarzaghi/jmeter-websocket-push-load-test" rel="noopener">GitHub</a></p>
+            </header>
+            <p class="clients">Progetto per un cliente, reso anonimo e pubblicato come portfolio: notifiche push a terminali di pagamento e sul campo connessi in WSS.</p>
+            <ul>
+              <li>Test plan JMeter 5.6.3 in cui ogni thread simula un terminale: connessione WSS, autenticazione JWT (AUTH/AUTH_OK), keep-alive PING/PONG.</li>
+              <li>Flusso end-to-end: comandi via HTTP POST e verifica della consegna push al terminale corretto, con misura della latenza POST→WAKE.</li>
+              <li>Macchina a stati per terminale in Groovy (JSR223), contatori condivisi tra thread, criterio pass/fail automatico sulla soglia di messaggi persi.</li>
+              <li>Profilo di carico parametrico (ramp-up, gradini, plateau, riconnessione), esecuzione non-GUI distribuita su più injector con dashboard HTML.</li>
+              <li>Script Bash per il tuning degli injector Linux a migliaia di connessioni simultanee (file descriptor, porte effimere, TIME_WAIT, conntrack, buffer) e setup idempotente delle VM.</li>
+              <li>Configurazione esterna senza credenziali nel codice, secret scanning con gitleaks prima della pubblicazione.</li>
             </ul>
           </article>
         </li>

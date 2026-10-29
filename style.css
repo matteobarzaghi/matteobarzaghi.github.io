@@ -144,6 +144,7 @@ footer { padding: 2rem 1rem 3rem; color: var(--muted); font-size: .9rem; }
   h2 {
     font-family: var(--sans); font-size: 7.5pt; font-weight: 700; letter-spacing: .25em;
     text-transform: uppercase; color: var(--accent); margin: 0 0 6pt; padding-bottom: 3pt;
+    break-after: avoid;
   }
   .grid { grid-template-columns: 36mm 1fr; gap: 2pt 10pt; }
 

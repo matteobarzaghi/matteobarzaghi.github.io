@@ -47,16 +47,16 @@
   <main id="main" class="wrap">
     <section aria-labelledby="profile">
       <h2 id="profile">Profile</h2>
-      <p>Senior QA Automation Engineer with 8+ years in enterprise environments (banking, energy, insurance, luxury retail). I design and maintain test automation frameworks in Java with Selenium WebDriver and Cucumber (BDD/Gherkin), integrated into CI/CD pipelines (Jenkins, GitHub Actions). Experienced in performance and load testing with JMeter and LoadRunner, API testing with Postman, Agile/Scrum teams and mentoring junior team members.</p>
+      <p>Senior QA Automation Engineer with 8+ years in enterprise environments (banking, energy, insurance, luxury retail). I design and maintain test automation frameworks in Java with Selenium WebDriver and Cucumber (BDD/Gherkin), integrated into CI/CD pipelines (Jenkins, GitHub Actions). Experienced in performance and load testing with JMeter and LoadRunner, including real-time systems with long-lived WebSocket connections, API testing with Postman, Agile/Scrum teams and mentoring junior team members.</p>
     </section>
 
     <section aria-labelledby="skills">
       <h2 id="skills">Technical Skills</h2>
       <dl class="grid">
         <dt>Test Automation</dt><dd>Java, Selenium WebDriver, Cucumber, BDD/Gherkin, Test Automation Framework, Tosca</dd>
-        <dt>Performance Testing</dt><dd>JMeter, LoadRunner, VuGen, Load &amp; Stress Testing, Bottleneck Analysis</dd>
-        <dt>CI/CD &amp; Cloud</dt><dd>Jenkins, GitHub Actions, Git, GCP, Linux</dd>
-        <dt>API &amp; Database</dt><dd>REST API Testing, Postman, SQL</dd>
+        <dt>Performance Testing</dt><dd>JMeter, LoadRunner, VuGen, Groovy/JSR223, WebSocket (WSS), Load &amp; Stress Testing, Distributed Load Testing, Bottleneck Analysis</dd>
+        <dt>CI/CD &amp; Cloud</dt><dd>Jenkins, GitHub Actions, Git, GCP, Linux, Bash, Linux Network Tuning (sysctl)</dd>
+        <dt>API &amp; Database</dt><dd>REST API Testing, Postman, JWT, SQL</dd>
         <dt>QA Process</dt><dd>Test Strategy, Test Planning, Regression &amp; Integration Testing, Defect Management, STLC</dd>
         <dt>Tools &amp; Methods</dt><dd>JIRA, TestRail, Salesforce, Agile/Scrum</dd>
       </dl>
@@ -90,6 +90,29 @@
             <ul>
               <li>Manual, integration and system testing on Salesforce platforms, covering the full STLC.</li>
               <li>Test data preparation, test suite execution and defect tracking in close contact with the client.</li>
+            </ul>
+          </article>
+        </li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="projects">
+      <h2 id="projects">Projects</h2>
+      <ol class="timeline">
+        <li>
+          <article>
+            <header>
+              <h3>WebSocket push notification load test <span>— JMeter, Groovy, Bash</span></h3>
+              <p class="date"><a href="https://github.com/matteobarzaghi/jmeter-websocket-push-load-test" rel="noopener">GitHub</a></p>
+            </header>
+            <p class="clients">Client project, anonymised and published as a portfolio piece: push notifications to payment and field terminals connected over WSS.</p>
+            <ul>
+              <li>JMeter 5.6.3 test plan where each thread simulates a terminal: WSS connection, JWT authentication (AUTH/AUTH_OK), PING/PONG keep-alive.</li>
+              <li>End-to-end flow: commands sent via HTTP POST and verification that the push reaches the right terminal, with POST→WAKE latency measurement.</li>
+              <li>Per-terminal state machine in Groovy (JSR223), counters shared across threads, automatic pass/fail on a lost-message threshold.</li>
+              <li>Parametric load profile (ramp-up, steps, plateaus, reconnection), non-GUI execution distributed across multiple injectors with HTML dashboard.</li>
+              <li>Bash scripts tuning Linux injectors for thousands of concurrent connections (file descriptors, ephemeral ports, TIME_WAIT, conntrack, socket buffers) and idempotent VM setup.</li>
+              <li>External configuration with no credentials in code; secret scanning with gitleaks before publishing.</li>
             </ul>
           </article>
         </li>
